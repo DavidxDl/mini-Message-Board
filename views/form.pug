@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  form(method="POST" action="/new")
+    div(class="inputfield")
+      label(for="name") Name:
+      input(type="text" required="true" name="name" id="name")
+    div(class="inputfield")
+      label(for="message") Message:
+      input(type="text" name="message" id="message")
+    div
+      button(type="submit") Send
+
+ 

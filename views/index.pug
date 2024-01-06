@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title} 
+  ul
+    each msj in messages
+      li= msj.user + ": " +  msj.text
+  a(href="/new")
+   button add Message 
