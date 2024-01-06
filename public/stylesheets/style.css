@@ -63,7 +63,8 @@ li::before {
 
 button {
   padding: 16px 30px;
-  box-shadow: 1px 3px 1px white;
+  box-shadow: 1px 2px 1px white;
+  border-radius: 10px;
 }
 a {
   color: #00b7ff;
