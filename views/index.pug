@@ -5,6 +5,6 @@ block content
   p Welcome to #{title} 
   ul
     each msj in messages
-      li= msj.user + ": " +  msj.text
+      li=msj.username + ": " +  msj.message
   a(href="/new")
    button add Message 

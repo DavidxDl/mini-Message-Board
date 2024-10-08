@@ -1,20 +1,12 @@
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date().getTime().toFixed(),
-  },
-];
 var express = require("express");
+const db = require("../db/querys.js")
 var router = express.Router();
 
 /* GET home page. */
-router.get("/", function (req, res, next) {
+router.get("/", async function(req, res, next) {
+  const messages = await db.getAllMessages();
+  console.log(messages);
+
   res.render("index", { title: "Express", messages: messages });
 });
 
@@ -22,14 +14,10 @@ router.get("/new", (req, res) => {
   res.render("form");
 });
 
-router.post("/new", (req, res) => {
-  messages.push({
-    user: req.body.name,
-    text: req.body.message,
-    added: new Date(),
-  });
+router.post("/new", async (req, res) => {
+  const { name, message } = req.body
+  await db.insertMessage(name, message);
   res.redirect("/");
-  console.log(messages);
 });
 
 module.exports = router;
